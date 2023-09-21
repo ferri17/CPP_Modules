@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:00:38 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/20 02:31:17 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/22 00:55:17 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <limits>
+# include <ios>
 
 class	Contact
 {
