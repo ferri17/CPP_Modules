@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:01:59 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/22 01:09:00 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/22 20:05:47 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ Contact::Contact()
 
 Contact::~Contact()
 {
-	std::cout << this->lastName << " died." << std::endl;
 	return ;
 }
 
@@ -45,5 +44,4 @@ void	Contact::init()
 	this->lastName = Contact::getInput(std::string("Enter your last name: "));
 	this->nickname = Contact::getInput(std::string("Enter your nickname: "));
 	this->lastName = Contact::getInput(std::string("Enter your darkest secret: "));
-
 }

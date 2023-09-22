@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:01:53 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/22 00:51:22 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/22 20:05:40 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	main(void)
 {
-	PhoneBook	phone_book;
+	PhoneBook	phoneBook;
 	std::string	input;
 
 	while (input != "EXIT")
 	{
-		std::cout << "Your command Sir:";
+		std::cout << "Your command:";
 		getline(std::cin, input);
 		if (input == "ADD")
-			phone_book.addContact();
+			phoneBook.addContact();
 		else if (input == "SEARCH")
-			phone_book.searchContact();
+			phoneBook.searchContact();
 		else if (input != "EXIT")
 			std::cout << "Please insert a valid instruction." << std::endl;
 	}
