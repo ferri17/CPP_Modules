@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:00:38 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/22 20:05:51 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/25 16:53:16 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 class	Contact
 {
 	private:
+		bool		isActive;
 		std::string	firstName;
 		std::string	lastName;
 		std::string	nickname;
@@ -31,6 +32,12 @@ class	Contact
 
 		void		init();
 		std::string	getInput(std::string) const;
+		std::string	getFirstName() const;
+		std::string	getLastName() const;
+		std::string	getNickname() const;
+		std::string	getPhoneNumber() const;
+		std::string	getDarkestSecret() const;
+		bool		getState() const;
 };
 
 #endif

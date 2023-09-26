@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:02:59 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/20 01:42:52 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/26 01:15:37 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include <iostream>
 # include <iomanip>
+# include <cstdlib>
 # include "Contact.hpp"
 
 class	PhoneBook
@@ -27,6 +28,7 @@ class	PhoneBook
 		~PhoneBook();
 		void	addContact();
 		void	searchContact();
+		int		printContacts();
 };
 
 #endif

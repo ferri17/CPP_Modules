@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 00:41:28 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/22 20:05:53 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/26 01:59:53 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 #define LIST_SIZE 8
 
+std::string	truncate_str(std::string str, size_t max_length);
+
 PhoneBook::PhoneBook()
 {
-	std::cout << "----WELCOME TO PHONE BOOK!-----" << std::endl;
+	/* std::cout << "----WELCOME TO PHONE BOOK!-----" << std::endl;
 	std::cout << "-------------------------------" << std::endl;
 	std::cout << "This is what you can do:" << std::endl;
 	std::cout << "ADD: Create a new contact." << std::endl;
 	std::cout << "SEARCH: Display a specific contact." << std::endl;
 	std::cout << "EXIT: Exit the program, all contacts will be lost!" << std::endl;
 	std::cout << "-------------------------------" << std::endl;
-	std::cout << std::endl;
+	std::cout << std::endl; */
 	return ;
 }
 
@@ -40,10 +42,62 @@ void	PhoneBook::addContact()
 	index = i % LIST_SIZE;
 	this->contacts[index].init();
 	i++;
-	std::cout << "add contact called" << std::endl;
 }
 
 void	PhoneBook::searchContact()
 {
-	std::cout << "search contact called" << std::endl;
+	bool	valid = false;
+	int		index = 0;
+	int		i;
+
+	if (this->contacts[0].getState() == false)
+	{
+		std::cout << "Your phonebook is still empty, please add a contact first." << std::endl;
+		return ;
+	}
+	i = printContacts();
+	do
+	{
+		std::cout << "What index would you like to access? ";
+		std::cin >> index;
+		if (std::cin.good())
+			valid = true;
+		else
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Error, invalid input." << std::endl;
+		}
+	} while (!valid);
+	if (index > 0 && index <= i && index <= LIST_SIZE)
+	{
+		index--;
+		std::cout << "First name: " << this->contacts[index].getFirstName() << std::endl;
+		std::cout << "Last name: " << this->contacts[index].getLastName() << std::endl;
+		std::cout << "Nickname: " << this->contacts[index].getNickname() << std::endl;
+		std::cout << "Phone number: " << this->contacts[index].getPhoneNumber() << std::endl;
+		std::cout << "Darkest secret: " << this->contacts[index].getDarkestSecret() << std::endl;
+	}
+	else
+		std::cout << "Sorry, this contact doesn't exist, good luck next time!" << std::endl;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+//Returns the number of active contacts found
+int	PhoneBook::printContacts()
+{
+	int	i;
+
+	std::cout << std::endl << std::setw(10) <<  "index" << "|";
+	std::cout << std::setw(10) <<  "first name" << "|";
+	std::cout << std::setw(10) <<  "last name" << "|";
+	std::cout << std::setw(10) <<  "nickname" << std::endl;
+	for (i = 0; this->contacts[i].getState() == true; i++)
+	{
+		std::cout << std::setw(10) << i + 1 << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].getFirstName(), 10) << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].getLastName(), 10) << "|";
+		std::cout << std::setw(10) << truncate_str(this->contacts[i].getNickname(), 10) << std::endl;
+	}
+	std::cout << std::endl;
+	return (i);
 }
