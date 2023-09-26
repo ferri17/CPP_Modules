@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:01:59 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/25 17:20:10 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/27 00:26:21 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,18 @@ Contact::~Contact()
 std::string	Contact::getInput(std::string	message) const
 {
 	std::string	input;
+	bool		valid = false;
 	
 	do
 	{
 		std::cout << message;
-		std::cin >> input;
+		getline(std::cin, input);
+		if (input.empty())
+			std::cout << "Error, empty string." << std::endl;
+		else
+			valid = true;
 	}
-	while (input.empty());
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	while (!valid);
 	return (input);
 }
 
@@ -46,7 +50,7 @@ void	Contact::init()
 	this->lastName = Contact::getInput(std::string("Enter your last name: "));
 	this->nickname = Contact::getInput(std::string("Enter your nickname: "));
 	this->phoneNumber = Contact::getInput(std::string("Enter your phone number: "));
-	this->darkestSecret = Contact::getInput(std::string("Enter your darkest secret: ")); //CHECK THIS CIN OR GETLINE()!!!
+	this->darkestSecret = Contact::getInput(std::string("Enter your darkest secret: "));
 }
 
 bool	Contact::getState() const

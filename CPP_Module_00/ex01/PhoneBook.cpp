@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 00:41:28 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/26 01:59:53 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/27 00:46:20 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@ std::string	truncate_str(std::string str, size_t max_length);
 
 PhoneBook::PhoneBook()
 {
-	/* std::cout << "----WELCOME TO PHONE BOOK!-----" << std::endl;
-	std::cout << "-------------------------------" << std::endl;
-	std::cout << "This is what you can do:" << std::endl;
-	std::cout << "ADD: Create a new contact." << std::endl;
-	std::cout << "SEARCH: Display a specific contact." << std::endl;
-	std::cout << "EXIT: Exit the program, all contacts will be lost!" << std::endl;
-	std::cout << "-------------------------------" << std::endl;
-	std::cout << std::endl; */
 	return ;
 }
 
@@ -91,6 +83,7 @@ int	PhoneBook::printContacts()
 	std::cout << std::setw(10) <<  "first name" << "|";
 	std::cout << std::setw(10) <<  "last name" << "|";
 	std::cout << std::setw(10) <<  "nickname" << std::endl;
+	std::cout << "------------------------------------------------------" << std::endl;
 	for (i = 0; this->contacts[i].getState() == true; i++)
 	{
 		std::cout << std::setw(10) << i + 1 << "|";

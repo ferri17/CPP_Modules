@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:00:38 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/25 16:53:16 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/27 00:40:19 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CONTACT_HPP
 
 # include <iostream>
-# include <limits>
-# include <ios>
 
 class	Contact
 {
@@ -29,7 +27,6 @@ class	Contact
 	public:
 		Contact();
 		~Contact();
-
 		void		init();
 		std::string	getInput(std::string) const;
 		std::string	getFirstName() const;
