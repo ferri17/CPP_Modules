@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:00:38 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/27 00:40:19 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/27 15:14:00 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <regex>
 
 class	Contact
 {
@@ -29,6 +30,7 @@ class	Contact
 		~Contact();
 		void		init();
 		std::string	getInput(std::string) const;
+		std::string	getInputPhone(std::string) const;
 		std::string	getFirstName() const;
 		std::string	getLastName() const;
 		std::string	getNickname() const;

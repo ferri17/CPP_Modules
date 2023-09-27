@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:01:59 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/27 00:26:21 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/27 15:28:09 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,26 @@ std::string	Contact::getInput(std::string	message) const
 	return (input);
 }
 
+std::string	Contact::getInputPhone(std::string	message) const
+{
+	std::string	input;
+	bool		valid = false;
+	
+	do
+	{
+		std::cout << message;
+		getline(std::cin, input);
+		if (std::regex_match(input, std::regex("\\b\\d{9}\\b")) == false)
+			std::cout << "Error, phone number must contain 9 digits." << std::endl;
+		else if (input.empty())
+			std::cout << "Error, empty string." << std::endl;
+		else
+			valid = true;
+	}
+	while (!valid);
+	return (input);
+}
+
 void	Contact::init()
 {
 	std::string	input;
@@ -49,7 +69,7 @@ void	Contact::init()
 	this->firstName = Contact::getInput(std::string("Enter your name: "));
 	this->lastName = Contact::getInput(std::string("Enter your last name: "));
 	this->nickname = Contact::getInput(std::string("Enter your nickname: "));
-	this->phoneNumber = Contact::getInput(std::string("Enter your phone number: "));
+	this->phoneNumber = Contact::getInputPhone(std::string("Enter your phone number: "));
 	this->darkestSecret = Contact::getInput(std::string("Enter your darkest secret: "));
 }
 
