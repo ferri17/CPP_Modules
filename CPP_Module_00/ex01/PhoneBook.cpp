@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 00:41:28 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/27 15:09:24 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/28 00:56:53 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	PhoneBook::searchContact()
 	{
 		std::cout << "What index would you like to access? ";
 		std::cin >> index;
+		if(std::cin.eof())
+			exit(1);
 		if (std::cin.good())
 			valid = true;
 		else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 01:01:59 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/27 15:28:09 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/28 00:56:40 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ std::string	Contact::getInput(std::string	message) const
 	{
 		std::cout << message;
 		getline(std::cin, input);
+		if(std::cin.eof())
+			exit(1);
 		if (input.empty())
 			std::cout << "Error, empty string." << std::endl;
 		else
@@ -50,6 +52,8 @@ std::string	Contact::getInputPhone(std::string	message) const
 	{
 		std::cout << message;
 		getline(std::cin, input);
+		if(std::cin.eof())
+			exit(1);
 		if (std::regex_match(input, std::regex("\\b\\d{9}\\b")) == false)
 			std::cout << "Error, phone number must contain 9 digits." << std::endl;
 		else if (input.empty())

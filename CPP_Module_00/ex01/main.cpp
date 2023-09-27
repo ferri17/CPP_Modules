@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:01:53 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/27 15:30:06 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/28 00:58:58 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	main(void)
 	{
 		std::cout << "\033[1;32mEnter a command (ADD, SEARCH, EXIT):\033[0m";
 		getline(std::cin, input);
+		if(std::cin.eof())
+			return(1);
 		if (input == "ADD" || input == "add")
 			phoneBook.addContact();
 		else if (input == "SEARCH" || input == "search")
