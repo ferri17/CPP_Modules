@@ -6,7 +6,7 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/09/27 01:04:55 by fbosch           ###   ########.fr        #
+#    Updated: 2023/09/29 16:27:26 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ HEADERS	=	Account.hpp
 DIR_OBJ = .obj/
 
 CC		=	c++
-CFLAGS	=	#-std=c++98 -Wall -Wextra -Werror
+CFLAGS	=	-std=c++98 -Wall -Wextra -Werror
 RM		=	rm -rf
 
 all:	$(DIR_OBJ) $(NAME)

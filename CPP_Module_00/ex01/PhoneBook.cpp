@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 00:41:28 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/28 00:56:53 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/09/28 12:15:58 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	PhoneBook::printContacts()
 	std::cout << std::setw(10) <<  "last name" << "|";
 	std::cout << std::setw(10) <<  "nickname" << std::endl;
 	std::cout << "------------------------------------------------------" << std::endl;
-	for (i = 0; this->contacts[i].getState() == true; i++)
+	for (i = 0; i < 8 && this->contacts[i].getState() == true; i++)
 	{
 		std::cout << std::setw(10) << i + 1 << "|";
 		std::cout << std::setw(10) << truncate_str(this->contacts[i].getFirstName(), 10) << "|";
