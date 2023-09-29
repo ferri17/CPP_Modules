@@ -6,12 +6,12 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/09/30 00:02:25 by fbosch           ###   ########.fr        #
+#    Updated: 2023/09/30 01:10:53 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	phonebook
-SRC		=	main.cpp PhoneBook.cpp Contact.cpp
+NAME	=	zombie
+SRC		=	main.cpp Zombie.cpp
 OBJ		=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP		=	$(OBJ:%.o=%.d)
 
