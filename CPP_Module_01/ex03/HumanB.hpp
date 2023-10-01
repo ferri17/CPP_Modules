@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/30 13:31:04 by fbosch           ###   ########.fr       */
+/*   Created: 2023/09/30 22:59:39 by fbosch            #+#    #+#             */
+/*   Updated: 2023/10/01 00:22:11 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-int	main(void){
-	
-	Zombie	rafael("Rafael");
-	Zombie *juanito = newZombie("Juanito");
+#include "Weapon.hpp"
+#include <iostream>
 
-	randomChump("Mailucena");
-	rafael.announce();
-	juanito->announce();
-	delete juanito;
-	return (0);
-}
+class	HumanB{
+
+	private:
+		std::string	_name;
+		Weapon		*_weapon;
+	public:
+		HumanB( std::string	name );
+		~HumanB();
+		
+		void	attack( void );
+		void	setWeapon( Weapon &newWeapon );
+
+};
+
+#endif

@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/30 13:31:04 by fbosch           ###   ########.fr       */
+/*   Created: 2023/09/30 17:36:08 by fbosch            #+#    #+#             */
+/*   Updated: 2023/09/30 23:36:10 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int	main(void){
-	
-	Zombie	rafael("Rafael");
-	Zombie *juanito = newZombie("Juanito");
+Weapon::Weapon( void ){
 
-	randomChump("Mailucena");
-	rafael.announce();
-	juanito->announce();
-	delete juanito;
-	return (0);
+	return ;
+}
+
+Weapon::Weapon( std::string type ){
+
+	setType(type);
+	return ;
+}
+
+Weapon::~Weapon(){
+
+	return ;
+}
+
+const std::string&	Weapon::getType( void ){
+
+	const std::string&	type = _type;
+	return (type);
+}
+
+void	Weapon::setType( std::string type ){
+
+	this->_type = type;
 }

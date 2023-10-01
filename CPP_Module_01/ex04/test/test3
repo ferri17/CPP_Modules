@@ -1,0 +1,4 @@
+This test check if the program is capable of replacing lines containing '\n'.
+
+Replace "this 
+text"

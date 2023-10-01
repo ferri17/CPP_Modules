@@ -5,21 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/30 13:31:04 by fbosch           ###   ########.fr       */
+/*   Created: 2023/09/30 22:53:43 by fbosch            #+#    #+#             */
+/*   Updated: 2023/10/01 00:35:46 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-int	main(void){
-	
-	Zombie	rafael("Rafael");
-	Zombie *juanito = newZombie("Juanito");
+int	main( void ){
 
-	randomChump("Mailucena");
-	rafael.announce();
-	juanito->announce();
-	delete juanito;
-	return (0);
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
 }

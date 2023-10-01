@@ -6,12 +6,12 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/09/30 22:59:10 by fbosch           ###   ########.fr        #
+#    Updated: 2023/09/30 22:58:49 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	zombie
-SRC		=	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+NAME	=	zombieHorde
+SRC		=	main.cpp Zombie.cpp zombieHorde.cpp
 OBJ		=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP		=	$(OBJ:%.o=%.d)
 

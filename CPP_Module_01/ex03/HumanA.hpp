@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/30 13:31:04 by fbosch           ###   ########.fr       */
+/*   Created: 2023/09/30 22:59:39 by fbosch            #+#    #+#             */
+/*   Updated: 2023/09/30 23:46:05 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-int	main(void){
-	
-	Zombie	rafael("Rafael");
-	Zombie *juanito = newZombie("Juanito");
+#include "Weapon.hpp"
+#include <iostream>
 
-	randomChump("Mailucena");
-	rafael.announce();
-	juanito->announce();
-	delete juanito;
-	return (0);
-}
+class	HumanA{
+
+	private:
+		std::string	_name;
+		Weapon		&_weapon;
+	public:
+		HumanA( std::string	name, Weapon &weapon );
+		~HumanA();
+		
+		void	attack( void );
+
+};
+
+#endif

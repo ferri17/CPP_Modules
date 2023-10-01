@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/09/30 22:59:10 by fbosch           ###   ########.fr        #
+#    Created: 2023/09/30 22:57:38 by fbosch            #+#    #+#              #
+#    Updated: 2023/10/01 00:38:34 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	zombie
-SRC		=	main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+NAME	=	weapons
+SRC		=	main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJ		=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP		=	$(OBJ:%.o=%.d)
 
