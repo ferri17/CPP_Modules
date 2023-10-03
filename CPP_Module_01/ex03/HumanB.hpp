@@ -6,15 +6,15 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 22:59:39 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/01 00:22:11 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:29:13 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HUMANB_HPP
 # define HUMANB_HPP
 
-#include "Weapon.hpp"
-#include <iostream>
+# include "Weapon.hpp"
+# include <iostream>
 
 class	HumanB{
 

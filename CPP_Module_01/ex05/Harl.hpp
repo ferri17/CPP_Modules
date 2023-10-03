@@ -6,11 +6,14 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 20:09:28 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/02 00:02:23 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:28:11 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HARL_HPP
+# define HARL_HPP
+
+# include <iostream>
 
 class Harl{
 
@@ -27,3 +30,5 @@ class Harl{
 };
 
 typedef void	(Harl::*t_func) ( void );
+
+#endif

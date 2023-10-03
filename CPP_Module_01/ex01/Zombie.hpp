@@ -6,14 +6,14 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:14:20 by fbosch            #+#    #+#             */
-/*   Updated: 2023/09/30 23:05:58 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/03 22:30:08 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-#include <iostream>
+# include <iostream>
 
 class	Zombie{
 
