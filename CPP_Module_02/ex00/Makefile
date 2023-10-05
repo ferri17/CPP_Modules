@@ -6,7 +6,7 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/10/04 01:22:50 by fbosch           ###   ########.fr        #
+#    Updated: 2023/10/06 00:28:09 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ DEP		=	$(OBJ:%.o=%.d)
 DIR_OBJ	=	.obj/
 
 CC		=	c++
-CFLAGS	=	-std=c++98 -Wall -Wextra -Werror
+CFLAGS	=	-std=c++98 -Wall -Wextra -Werror -pedantic
 DPFLAGS	=	-MMD -MP
 RM		=	rm -rf
 

@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/04 01:20:40 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/06 00:28:21 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Fixed{
 	public:
 		Fixed( void );
 		Fixed( const Fixed &fixed );
-		void	operator=( const Fixed &fixed );
+		Fixed	&operator=( const Fixed &other );
 		~Fixed(void);
 
 		int		getRawBits( void ) const;
