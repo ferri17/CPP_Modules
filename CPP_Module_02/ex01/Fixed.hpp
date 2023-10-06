@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/06 17:37:04 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:37:14 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
 class	Fixed{
 
@@ -23,6 +24,8 @@ class	Fixed{
 	public:
 		Fixed( void );
 		Fixed( const Fixed &fixed );
+		Fixed( const int nb );
+		Fixed( const float nb );
 		Fixed	&operator=( const Fixed &other );
 		~Fixed(void);
 

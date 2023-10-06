@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/06 17:41:59 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/06 17:41:53 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ Fixed::Fixed( const Fixed &fixed ){
 	
 	std::cout << "Copy constructor called" << std::endl;
 	*this = fixed; 
+}
+
+Fixed::Fixed( const int nb ){
+	
+	this->setRawBits(nb << _fractionalBits);
+}
+
+Fixed::Fixed( const float nb ){
+	
 }
 
 Fixed	&Fixed::operator=( const Fixed &other ){
