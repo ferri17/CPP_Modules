@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/10 23:47:24 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/11 01:12:45 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,43 @@ int		Fixed::toInt( void ) const{
 
 /*---------------------------------OPERATORS--------------------------------*/
 
-std::ostream	&operator<< (std::ostream &out, const Fixed &nb){
+std::ostream	&operator<<(std::ostream &out, const Fixed &nb){
 	
 	return (out << nb.toFloat());
+}
+
+bool	Fixed::operator<(const Fixed &other){
+
+	return (this->getRawBits() < other.getRawBits());
+}
+
+bool	Fixed::operator>(const Fixed &other){
+
+	return (this->getRawBits() > other.getRawBits());
+}
+
+bool	Fixed::operator<=(const Fixed &other){
+
+	return (this->getRawBits() <= other.getRawBits());
+}
+
+bool	Fixed::operator>=(const Fixed &other){
+
+	return (this->getRawBits() >= other.getRawBits());
+}
+
+bool	Fixed::operator==(const Fixed &other){
+
+	return (this->getRawBits() == other.getRawBits());
+}
+
+bool	Fixed::operator!=(const Fixed &other){
+
+	return (this->getRawBits() != other.getRawBits());
+}
+
+Fixed	&Fixed::operator++( void ){
+
+	this->setRawBits(this->getRawBits() + 1);
+	return (*this);
 }
