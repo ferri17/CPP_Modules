@@ -6,12 +6,12 @@
 #    By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/10/12 14:21:26 by fbosch           ###   ########.fr        #
+#    Updated: 2023/10/12 20:20:37 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	bsp
-SRC		=	main.cpp Fixed.cpp
+SRC		=	main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJ		=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP		=	$(OBJ:%.o=%.d)
 
