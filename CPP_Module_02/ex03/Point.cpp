@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:46:13 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/12 18:48:52 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/13 01:38:37 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ Point::Point( void ) : _x(0), _y(0) {}
 
 Point::Point( const float x, const float y ) : _x(x), _y(y) {}
 
-Point::Point( const Point &other ){
-
-	*this = other;
-}
+Point::Point( const Point &other ) : _x(other.getX()), _y(other.getY()) {}
 
 /*
 	Private variables _x and _y are defined as const so "operator=" can't be 
