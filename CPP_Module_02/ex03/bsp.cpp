@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:52:37 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/13 01:38:32 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:29:40 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,20 @@ Fixed	areaTriangle( Point const a, Point const b, Point const c ){
 
 bool bsp( Point const a, Point const b, Point const c, Point const point){
 
-	Fixed	tAbc = fiabs(areaTriangle(a, b, c));
-	Fixed	tPab = fiabs(areaTriangle(point, a, b));
-	Fixed	tPbc = fiabs(areaTriangle(point, b, c));
-	Fixed	tPac = fiabs(areaTriangle(point, a, c));
+	Fixed tAbc = fiabs(areaTriangle(a, b, c));
+    Fixed tPab = fiabs(areaTriangle(point, a, b));
+    Fixed tPbc = fiabs(areaTriangle(point, b, c));
+    Fixed tPac = fiabs(areaTriangle(point, a, c));
 
-	/* std::cout << tAbc << std::endl;
-	std::cout << tPab << std::endl;
-	std::cout << tPbc << std::endl;
-	std::cout << tPac << std::endl;
- */
-	if (tAbc == tPab + tPbc + tPac)
-		return (true);
-	return (false);
+    const Fixed tolerance(0.0001f);
+
+    // Check if the point is on the edge of the triangle (within tolerance of the area)
+    if (fiabs(tPab) <= tolerance || fiabs(tPbc) <= tolerance || fiabs(tPac) <= tolerance)
+        return (false);
+
+    // Check if the areas sum up to the area of the triangle
+    if (fiabs(tAbc - (tPab + tPbc + tPac)) <= tolerance)
+        return (true);
+		
+    return (false);
 }
