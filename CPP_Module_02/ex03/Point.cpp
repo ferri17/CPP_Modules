@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:46:13 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/13 01:38:37 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/13 14:25:53 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ Fixed	Point::getY( void ) const{
 
 	return (this->_y);
 }
-

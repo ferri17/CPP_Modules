@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/13 14:09:56 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/13 14:26:42 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	main(void){
 		else
 			std::cout << RED "(" << point2[i].getX() << "," << point2[i].getY() << ") is outside." RESET << std::endl;
 	}
+
+	std::cout << std::endl << std::endl;
 
 	Point	vertex7( 0, 0);
 	Point	vertex8( 100, 0);

@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
+#    By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/10/10 23:47:43 by fbosch           ###   ########.fr        #
+#    Updated: 2023/10/13 14:32:10 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	float
+NAME	=	float2
 SRC		=	main.cpp Fixed.cpp
 OBJ		=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP		=	$(OBJ:%.o=%.d)
