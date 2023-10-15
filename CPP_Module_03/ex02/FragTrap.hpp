@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/15 16:19:36 by fbosch           ###   ########.fr       */
+/*   Created: 2023/10/15 11:39:20 by fbosch            #+#    #+#             */
+/*   Updated: 2023/10/16 00:41:53 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
+
 #include "ClapTrap.hpp"
+#include <iostream>
 
-int	main(void){
+class FragTrap : public	ClapTrap {
 
-    ClapTrap    ferran("Ferran");
-    ClapTrap    dran("Dran");
+	public:
+		FragTrap( void );
+		FragTrap( std::string name );
+		FragTrap( const FragTrap & other );
+		FragTrap &	operator=( const FragTrap & other );
+		~FragTrap();
 
-    for (int i = 0; i < 12; i++)
-        ferran.attack("Bot 1");
-    ferran.beRepaired(1000);
-    for (int i = 0; i < 3; i++)
-        ferran.takeDamage(6);
-    dran.beRepaired(10);
-    dran.takeDamage(15);
-    dran.takeDamage(15);
-    dran.beRepaired(10);
-}
+		void	highFivesGuys( void );
+	
+};
+
+#endif
