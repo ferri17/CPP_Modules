@@ -6,12 +6,12 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/10/16 00:46:05 by fbosch           ###   ########.fr        #
+#    Updated: 2023/10/22 02:23:23 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	manyClapTraps
-SRC			=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+NAME		=	diamondTrap
+SRC			=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ			=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP			=	$(OBJ:%.o=%.d)
 

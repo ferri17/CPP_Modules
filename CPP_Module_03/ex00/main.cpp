@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/15 16:19:36 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/22 01:39:35 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,6 @@ int	main(void){
     dran.takeDamage(15);
     dran.takeDamage(15);
     dran.beRepaired(10);
+    return (0);
+
 }

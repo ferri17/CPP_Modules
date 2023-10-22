@@ -6,31 +6,28 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/16 00:45:05 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/22 02:26:09 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main(void){
     
-    FragTrap    frag1("Frag 1");
-    ScavTrap    scav2("Scav 2");
-    ScavTrap    scav3;
+    DiamondTrap ferran;
+    DiamondTrap josefran("durum");
 
-    for (int i = 0; i < 4; i++)
-        frag1.attack("Bot 1");
-    frag1.beRepaired(10);
-    frag1.highFivesGuys();
-    for (int i = 0; i < 3; i++)
-        frag1.takeDamage(90);
-    frag1.highFivesGuys();
-    scav2.beRepaired(10);
-    scav2.takeDamage(15);
-    scav2.takeDamage(15);
-    scav2.beRepaired(10);
+    ferran.attack("mich");
+    ferran.whoAmI();
+    josefran.whoAmI();
+    for (int i = 0; i < 51; i++)
+        josefran.beRepaired(100);
+    ferran.takeDamage(99);
+    ferran.takeDamage(0);
+    ferran.takeDamage(10);
     return (0);
 
 }

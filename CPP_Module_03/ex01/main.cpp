@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/16 00:17:19 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/22 01:57:43 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(void){
     scav3.attack( "Bot 97");
     
     ClapTrap    randomo;
+    randomo.attack("randomo2");
     randomo.takeDamage(10);
     randomo.beRepaired(100);
     return (0);

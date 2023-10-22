@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:39:20 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/16 00:41:53 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/20 19:37:46 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-class FragTrap : public	ClapTrap {
+class FragTrap : virtual public	ClapTrap {
 
 	public:
 		FragTrap( void );
