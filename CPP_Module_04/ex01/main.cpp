@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/24 00:35:00 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/25 22:45:57 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,47 +28,8 @@ void	animalSoundReferenceCopy(Animal * animal) {
 
 int	main(void) {
 
-	std::cout << "-> Testing animals <-" << std::endl;
-	const Animal    *Animals[] =
-	{
-		new Animal(),
-		new Dog(),
-		new Cat()
-	};
+	Cat	fer;
 
-	for (int i = 0; i < 3; i++)
-	{
-		std::cout << "-----------" << std::endl; 
-		std::cout << Animals[i]->getType() << std::endl;
-		Animals[i]->makeSound();
-		delete Animals[i];
-		std::cout << "-----------" << std::endl; 
-	}
-
-	Animal *	unknown = new Dog();
-
-	unknown->makeSound();
-	animalSoundValueCopy(*unknown);
-	animalSoundReferenceCopy(unknown);
-	delete	unknown;
-
-	std::cout << "\n\n-> Testing wrong animal <-" << std::endl;
-	const WrongAnimal    *WrongAnimals[] =
-	{
-		new WrongAnimal(),
-		new WrongCat()
-	};
-	const WrongCat *	fili = new WrongCat();
-
-	fili->makeSound();
-	delete fili;
-	for (int i = 0; i < 2; i++)
-	{
-		std::cout << "-----------" << std::endl; 
-		std::cout << WrongAnimals[i]->getType() << std::endl;
-		WrongAnimals[i]->makeSound();
-		delete WrongAnimals[i];
-		std::cout << "-----------" << std::endl; 
-	}
+	Cat	duru = fer;
 	return (0);
 }
