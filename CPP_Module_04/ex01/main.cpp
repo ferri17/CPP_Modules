@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/26 03:30:55 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/26 13:37:53 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(void) {
 
 	Animal *	spiri = new Cat();
 	*spiri = *spiri;
-	
+	delete spiri;
 	std::cout << "===========" << std::endl;
 	Animal * zoo[] =
 	{
@@ -42,6 +42,14 @@ int	main(void) {
 	std::cout << "===========" << std::endl;
 	for (int i = 0; i < 4; i++)
 		delete zoo[i];
-	delete spiri;
+	std::cout << "===========" << std::endl;
+	Dog		plat;
+	Dog *	mars = new Dog(plat);
+
+	plat.getType();
+	plat.makeSound();
+	mars->getType();
+	mars->makeSound();
+	delete mars;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/26 02:13:25 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/26 13:38:36 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Dog::Dog( void ) : Animal("Dog") {
 Dog::Dog( Dog const & other ) {
 
 	std::cout << "	- Dog copy constructor called" << std::endl;
-	this->_brain = new Brain();   //DOES THIIIIIIS SOLVE IT
+	this->_brain = new Brain();
 	*this = other;
 }
 

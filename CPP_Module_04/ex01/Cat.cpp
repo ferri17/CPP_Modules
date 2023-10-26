@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/25 22:43:28 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/26 13:27:20 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Cat::Cat( void ) : Animal("Cat") {
 Cat::Cat( Cat const & other ) {
 
 	std::cout << "	- Cat copy constructor called" << std::endl;
-	this->_brain = new Brain();   //DOES THIIIIIIS SOLVE IT
+	this->_brain = new Brain();
 	*this = other;
 }
 
@@ -32,7 +32,7 @@ Cat &	Cat::operator=( Cat const & other) {
 	if (this != &other)
 	{
 		this->_type = other._type;
-		*(this->_brain) = *(other._brain); //what if brain is uninitialized?
+		*(this->_brain) = *(other._brain);
 	}
 	return (*this);
 }
