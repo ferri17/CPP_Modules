@@ -1,50 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/26 13:44:18 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/26 17:16:39 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AAnimal.hpp"
 
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
-Cat::Cat( void ) : Animal("Cat") {
+AAnimal::AAnimal( void ) : _type("unidentified Aanimal") {
 
-	std::cout << "	- Cat default constructor called" << std::endl;
-	this->_brain = new Brain();
+	std::cout << "AAnimal default constructor called" << std::endl;
 }
 
-Cat::Cat( Cat const & other ) : Animal("Cat") {
+AAnimal::AAnimal( AAnimal const & other ) {
 
-	std::cout << "	- Cat copy constructor called" << std::endl;
-	this->_brain = new Brain();
+	std::cout << "AAnimal copy constructor called" << std::endl;
 	*this = other;
 }
 
-Cat &	Cat::operator=( Cat const & other) {
+AAnimal &	AAnimal::operator=( AAnimal const & other) {
 
-	std::cout << "	- Cat assignment operator called" << std::endl;
+	std::cout << "AAnimal assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_type = other._type;
-		*(this->_brain) = *(other._brain);
 	}
 	return (*this);
 }
 
-Cat::~Cat( void ) {
+AAnimal::AAnimal( std::string const & type ) : _type(type) {
 
-	std::cout << "	- Cat destructor called" << std::endl;
-	delete this->_brain;
+	std::cout << "AAnimal name constructor called" << std::endl;
+}
+
+
+AAnimal::~AAnimal( void ) {
+
+	std::cout << "AAnimal destructor called" << std::endl;
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/
-void	Cat::makeSound( void ) const {
+std::string	AAnimal::getType( void ) const {
 
-	std::cout << "	- Miauuuuuuu!" << std::endl;
+	return (this->_type);
 }

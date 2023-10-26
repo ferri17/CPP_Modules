@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/26 13:44:18 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/26 17:26:51 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
-Cat::Cat( void ) : Animal("Cat") {
+Dog::Dog( void ) : AAnimal("Dog") {
 
-	std::cout << "	- Cat default constructor called" << std::endl;
+	std::cout << "	- Dog default constructor called" << std::endl;
 	this->_brain = new Brain();
 }
 
-Cat::Cat( Cat const & other ) : Animal("Cat") {
+Dog::Dog( Dog const & other ) : AAnimal("Dog") {
 
-	std::cout << "	- Cat copy constructor called" << std::endl;
+	std::cout << "	- Dog copy constructor called" << std::endl;
 	this->_brain = new Brain();
 	*this = other;
 }
 
-Cat &	Cat::operator=( Cat const & other) {
+Dog &	Dog::operator=( Dog const & other) {
 
-	std::cout << "	- Cat assignment operator called" << std::endl;
+	std::cout << "	- Dog assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_type = other._type;
@@ -37,14 +37,14 @@ Cat &	Cat::operator=( Cat const & other) {
 	return (*this);
 }
 
-Cat::~Cat( void ) {
+Dog::~Dog( void ) {
 
-	std::cout << "	- Cat destructor called" << std::endl;
+	std::cout << "	- Dog destructor called" << std::endl;
 	delete this->_brain;
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/
-void	Cat::makeSound( void ) const {
+void	Dog::makeSound( void ) const {
 
-	std::cout << "	- Miauuuuuuu!" << std::endl;
+	std::cout << "	- Woof! Woof!" << std::endl;
 }

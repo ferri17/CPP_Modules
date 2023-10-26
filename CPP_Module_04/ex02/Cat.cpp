@@ -6,20 +6,20 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/26 13:44:18 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/26 17:26:45 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
-Cat::Cat( void ) : Animal("Cat") {
+Cat::Cat( void ) : AAnimal("Cat") {
 
 	std::cout << "	- Cat default constructor called" << std::endl;
 	this->_brain = new Brain();
 }
 
-Cat::Cat( Cat const & other ) : Animal("Cat") {
+Cat::Cat( Cat const & other ) : AAnimal("Cat") {
 
 	std::cout << "	- Cat copy constructor called" << std::endl;
 	this->_brain = new Brain();

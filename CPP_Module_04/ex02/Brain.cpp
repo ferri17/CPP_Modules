@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/26 15:12:25 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/25 22:02:36 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Brain.hpp"
 
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
-Cat::Cat( void ) : Animal("Cat") {
+Brain::Brain( void ) {
 
-	std::cout << "Cat default constructor called" << std::endl;
+	std::cout << "	- Brain default constructor called" << std::endl;
 }
 
-Cat::Cat( Cat const & other ) : Animal("Cat") {
+Brain::Brain( Brain const & other ) {
 
-	std::cout << "Cat copy constructor called" << std::endl;
+	std::cout << "	- Brain copy constructor called" << std::endl;
 	*this = other;
 }
 
-Cat &	Cat::operator=( Cat const & other) {
+Brain &	Brain::operator=( Brain const & other) {
 
-	std::cout << "Cat assignment operator called" << std::endl;
+	std::cout << "	- Brain assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		this->_type = other._type;
+		for (int i = 0; i < NB_IDEAS; i++)
+			this->_ideas[i] = other._ideas[i];
 	}
 	return (*this);
 }
 
-Cat::~Cat( void ) {
+Brain::~Brain( void ) {
 
-	std::cout << "Cat destructor called" << std::endl;
+	std::cout << "	- Brain destructor called" << std::endl;
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/
-void	Cat::makeSound( void ) const {
-
-	std::cout << "Miauuuuuuu!" << std::endl;
-}

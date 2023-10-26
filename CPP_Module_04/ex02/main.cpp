@@ -6,11 +6,11 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/26 16:49:31 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/26 17:33:55 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
@@ -22,8 +22,8 @@ void	testBasicAnimalArray(void) {
 	std::cout << "Basic animal array test" << std::endl;
 	std::cout << "===========================================" << std::endl;
 	
-	Animal *	spiri = new Cat();
-	Animal * zoo[] =
+	AAnimal *	spiri = new Cat();
+	AAnimal * zoo[] =
 	{
 		new Cat(),
 		new Dog(),
@@ -62,7 +62,7 @@ void	testPointer(void) {
 
 	Cat	og;
 	Cat *	og2 = &og;
-	const	Animal *cpy = new Cat(og);
+	const	AAnimal *cpy = new Cat(og);
 	
 	std::cout << og.getType() << std::endl;
 	std::cout << cpy->getType() << std::endl;
@@ -71,7 +71,7 @@ void	testPointer(void) {
 }
 
 int	main(void) {
-
+	
 	testBasicAnimalArray();
 	testAssignation();
 	testPointer();
