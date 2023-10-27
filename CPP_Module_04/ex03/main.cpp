@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:33:14 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 14:51:53 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:36:18 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	main(void) {
 	characters[0]->equip(cureSpell);
 	characters[0]->use(0, *(characters[2]));
 	characters[0]->printHUD();
-	characters[0]->unequip(3);
-	characters[0]->unequip(1);
+	//characters[0]->unequip(3);
+	//characters[0]->unequip(1);
 	characters[0]->printHUD();
 	characters[0]->equip(iceSpell);
 	characters[0]->equip(cureSpell);

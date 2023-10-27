@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:51:52 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 14:49:20 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:36:11 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,19 @@ Character &	Character::operator=( Character const &	other) {
 Character::~Character( void ) {
 
 	std::cout << "Character destructor called" << std::endl;
+	for (int i = 0; i < SLOTS; i++)
+	{
+		if (this->_inventory[i] != NULL)
+		{
+			for (int j = i + 1; j < SLOTS; j++)
+			{
+				if (this->_inventory[i] == this->_inventory[j])
+					this->_inventory[j] = NULL;
+			}
+			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
+	}
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/
