@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:34:46 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 01:14:31 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/27 13:09:36 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define SLOTS 4
 
 # include <iostream>
+# include <iomanip>
 # include "AMateria.hpp"
 # include "ICharacter.hpp"
 
@@ -23,12 +24,20 @@ class Character : public ICharacter {
 
 	private:
 		std::string	_name;
-		AMateria *	inventory[ SLOTS ];
+		AMateria *	_inventory[ SLOTS ];
 	public:
 		Character( void );
+		Character( std::string const & name );
 		Character( Character const & other );
-		Character &	operator=( Character const & other );
+		Character &	operator=( Character const &	other );
 		~Character( void );
+
+		std::string const &	getName() const;
+		void				equip( AMateria* m );
+		void				unequip( int idx );
+		void				use( int idx, ICharacter & target );
+
+		void				printHUD( void );
 };
 
 #endif

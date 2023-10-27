@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:34:46 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 00:48:50 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/27 12:48:31 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define AMATERIA_HPP
 
 # include <iostream>
-# include "Character.hpp"
+# include "ICharacter.hpp"
 
 class AMateria {
 
@@ -25,12 +25,12 @@ class AMateria {
 	AMateria( std::string const & type );
 	AMateria( AMateria const & other );
 	AMateria &	operator=( AMateria const & other );
-	~AMateria( void );
+	virtual ~AMateria( void );
 	
 	
 	std::string const & getType() const;
 	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter & target);
+	virtual void use( ICharacter & target );
 };
 
 #endif

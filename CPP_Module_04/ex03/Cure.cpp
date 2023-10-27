@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:58:34 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 12:23:09 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/27 14:45:25 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Cure.hpp"
 
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
-Ice::Ice( void ) : AMateria("ice") {
+Cure::Cure( void ) : AMateria("cure") {
 
-	std::cout << "Ice default constructor called" << std::endl;
+	std::cout << "Cure default constructor called" << std::endl;
 }
 
-Ice::Ice( Ice const & other ) {
+Cure::Cure( Cure const & other ) {
 
-	std::cout << "Ice copy constructor called" << std::endl;
+	std::cout << "Cure copy constructor called" << std::endl;
 	*this = other;
 }
 
-Ice &	Ice::operator=( Ice const & other) {
+Cure &	Cure::operator=( Cure const & other) {
 	
-	std::cout << "Ice assignment operator called" << std::endl;
+	std::cout << "Cure assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_type = other.getType(); //Probably redundant
@@ -34,18 +34,18 @@ Ice &	Ice::operator=( Ice const & other) {
 	return (*this);
 }
 
-Ice::~Ice( void ) {
+Cure::~Cure( void ) {
 
-	std::cout << "Ice destructor called" << std::endl;
+	std::cout << "Cure destructor called" << std::endl;
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/
-Ice *	Ice::clone() const {
+Cure *	Cure::clone() const {
 	
-	return (new Ice());
+	return (new Cure());
 }
 
-void Ice::use( ICharacter & target ) {
+void Cure::use( ICharacter & target ) {
 
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

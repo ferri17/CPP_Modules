@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
+#    By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/10/27 01:15:01 by fbosch           ###   ########.fr        #
+#    Updated: 2023/10/27 12:33:02 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	wizards
-SRC			=	main.cpp AMateria.cpp Ice.cpp
+SRC			=	main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp
 OBJ			=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP			=	$(OBJ:%.o=%.d)
 
