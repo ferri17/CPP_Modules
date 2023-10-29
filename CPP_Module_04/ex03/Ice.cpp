@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:58:34 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 12:23:09 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/29 00:16:26 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
 Ice::Ice( void ) : AMateria("ice") {
 
-	std::cout << "Ice default constructor called" << std::endl;
+	//std::cout << "Ice default constructor called" << std::endl;
 }
 
 Ice::Ice( Ice const & other ) {
 
-	std::cout << "Ice copy constructor called" << std::endl;
+	//std::cout << "Ice copy constructor called" << std::endl;
 	*this = other;
 }
 
 Ice &	Ice::operator=( Ice const & other) {
 	
-	std::cout << "Ice assignment operator called" << std::endl;
+	//std::cout << "Ice assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_type = other.getType(); //Probably redundant
@@ -36,7 +36,7 @@ Ice &	Ice::operator=( Ice const & other) {
 
 Ice::~Ice( void ) {
 
-	std::cout << "Ice destructor called" << std::endl;
+	//std::cout << "Ice destructor called" << std::endl;
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/

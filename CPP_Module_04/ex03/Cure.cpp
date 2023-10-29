@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:58:34 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 14:45:25 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/29 00:16:16 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
 Cure::Cure( void ) : AMateria("cure") {
 
-	std::cout << "Cure default constructor called" << std::endl;
+	//std::cout << "Cure default constructor called" << std::endl;
 }
 
 Cure::Cure( Cure const & other ) {
 
-	std::cout << "Cure copy constructor called" << std::endl;
+	//std::cout << "Cure copy constructor called" << std::endl;
 	*this = other;
 }
 
 Cure &	Cure::operator=( Cure const & other) {
 	
-	std::cout << "Cure assignment operator called" << std::endl;
+	//std::cout << "Cure assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_type = other.getType(); //Probably redundant
@@ -36,7 +36,7 @@ Cure &	Cure::operator=( Cure const & other) {
 
 Cure::~Cure( void ) {
 
-	std::cout << "Cure destructor called" << std::endl;
+	//std::cout << "Cure destructor called" << std::endl;
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/

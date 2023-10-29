@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:34:46 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 13:11:59 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/29 02:13:00 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ class ICharacter {
 		virtual void use( int idx, ICharacter & target ) = 0;
 		virtual ~ICharacter( void ) {}
 
-		virtual void	printHUD( void ) = 0;
+		virtual void		printHUD( void ) = 0;
+		virtual AMateria *	getMateria( int idx ) = 0;
 
 
 };

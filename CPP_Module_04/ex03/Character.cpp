@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:51:52 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/27 19:36:11 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/10/29 00:16:06 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,29 @@
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
 Character::Character( void ) : _name("undefined") {
 
-	std::cout << "Character default constructor called" << std::endl;
+	//std::cout << "Character default constructor called" << std::endl;
 	for (int i = 0; i < SLOTS; i++)
 		_inventory[i] = NULL;
 }
 
 Character::Character( std::string const & name ) : _name(name) {
 
-	std::cout << "Character name constructor called" << std::endl;
+	//std::cout << "Character name constructor called" << std::endl;
 	for (int i = 0; i < SLOTS; i++)
 		this->_inventory[i] = NULL;
 }
 
 Character::Character( Character const &	other ) {
 
-	std::cout << "Character copy constructor called" << std::endl;
+	//std::cout << "Character copy constructor called" << std::endl;
+	for (int i = 0; i < SLOTS; i++)
+		this->_inventory[i] = NULL;
 	*this = other;
 }
 
 Character &	Character::operator=( Character const &	other) {
 	
-	std::cout << "Character assignment operator called" << std::endl;
+	//std::cout << "Character assignment operator called" << std::endl;
 	if (this != &other)
 	{
 		this->_name = other.getName();
@@ -45,7 +47,10 @@ Character &	Character::operator=( Character const &	other) {
 		{
 			if (this->_inventory[i] != NULL)
 				delete this->_inventory[i];
-			this->_inventory[i] = other._inventory[i];
+			if (other._inventory[i] != NULL)
+				this->_inventory[i] = other._inventory[i]->clone();
+			else
+				this->_inventory[i] = NULL;
 		}
 	}
 	return (*this);
@@ -53,7 +58,7 @@ Character &	Character::operator=( Character const &	other) {
 
 Character::~Character( void ) {
 
-	std::cout << "Character destructor called" << std::endl;
+	//std::cout << "Character destructor called" << std::endl;
 	for (int i = 0; i < SLOTS; i++)
 	{
 		if (this->_inventory[i] != NULL)
@@ -101,8 +106,13 @@ void	Character::unequip( int idx ) {
 
 	if (idx >= 0 && idx < SLOTS)
 	{
-		this->_inventory[idx] = NULL;
-		std::cout << this->getName() << " unequipped materia on slot " << idx << std::endl;
+		if (this->_inventory[idx] == NULL)
+			std::cout << "Slot " << idx << " is already empty!" << std::endl;
+		else
+		{
+			this->_inventory[idx] = NULL;
+			std::cout << this->getName() << " unequipped materia on slot " << idx << std::endl;
+		}
 	}
 	else
 		std::cout << "Couldn't unequip materia, slot " << idx << " doesn't exist" << std::endl;
@@ -116,6 +126,14 @@ void	Character::use( int idx, ICharacter & target ) {
 	}
 	else
 		std::cout << "No materia available on slot " << idx << " , couldn't use." << std::endl;
+}
+
+AMateria *	Character::getMateria( int idx ) {
+
+	if (idx >= 0 && idx < SLOTS)
+		return (this->_inventory[idx]);
+	else
+		return (NULL);
 }
 
 void	Character::printHUD( void ) {
@@ -134,9 +152,10 @@ void	Character::printHUD( void ) {
 	std::cout << std::setw(COL_WIDTH * 4) << std::setfill('-') << "" << std::endl;
 
 	for (int i = 0; i < SLOTS; i++)
-	{
 		std::cout << std::setw(COL_WIDTH) << std::right << std::setfill(' ') << (this->_inventory[i] ? this->_inventory[i]->getType() : "****");
-	}
+	std::cout << std::endl;
+	for (int i = 0; i < SLOTS; i++)
+		std::cout << std::setw(COL_WIDTH) << std::right << std::setfill(' ') << (this->_inventory[i]);
 	std::cout << std::endl;
 	std::cout << std::setw(COL_WIDTH * 4) << std::setfill('-') << "" << std::endl;
 }
