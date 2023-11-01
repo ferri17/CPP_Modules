@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:34:46 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/29 02:13:06 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/11/01 14:20:28 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Character : public ICharacter {
 
 		void				printHUD( void );
 		AMateria *			getMateria( int idx );
+		
 };
 
 #endif

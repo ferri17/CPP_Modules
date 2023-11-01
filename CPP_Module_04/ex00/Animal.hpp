@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/23 22:57:16 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/11/01 11:32:05 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 
-class	Animal{
+class	Animal {
 
 	protected:
 		std::string	_type;
@@ -24,11 +24,11 @@ class	Animal{
 		Animal( void );
 		Animal( Animal const & other );
 		Animal &	operator=( Animal const & other );
-		virtual	~Animal( void );
+		virtual		~Animal( void );
 
 		virtual void	makeSound( void ) const;
 
-		std::string	getType( void ) const;
+		std::string		getType( void ) const;
 		
 };
 

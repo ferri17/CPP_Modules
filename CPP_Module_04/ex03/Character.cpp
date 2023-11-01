@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:51:52 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/29 00:16:06 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/11/01 14:20:22 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,4 +159,3 @@ void	Character::printHUD( void ) {
 	std::cout << std::endl;
 	std::cout << std::setw(COL_WIDTH * 4) << std::setfill('-') << "" << std::endl;
 }
-

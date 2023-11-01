@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 22:34:46 by fbosch            #+#    #+#             */
-/*   Updated: 2023/10/28 23:55:27 by fbosch           ###   ########.fr       */
+/*   Updated: 2023/11/01 14:28:25 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 class MateriaSource : public IMateriaSource
 {
+	
 	private:
 		AMateria *	_materias[ SLOTS_S ];
 	public:
