@@ -18,7 +18,7 @@ Cure::Cure( void ) : AMateria("cure") {
 	//std::cout << "Cure default constructor called" << std::endl;
 }
 
-Cure::Cure( Cure const & other ) {
+Cure::Cure( Cure const & other ) : AMateria("cure") {
 
 	//std::cout << "Cure copy constructor called" << std::endl;
 	*this = other;
