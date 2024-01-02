@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/01/02 01:09:20 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/01/02 19:01:41 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class	Bureaucrat
 		
 		void		incrementGrade( void );
 		void		decrementGrade( void );
-		void		signForm( AForm &form );
+		void		signForm( AForm &form ) const;
+		void		executeForm(AForm const & form) const;
 
 		class	GradeTooHighException : public std::exception
 		{

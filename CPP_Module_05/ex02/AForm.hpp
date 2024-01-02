@@ -19,7 +19,7 @@ class	Bureaucrat;
 
 class	AForm
 {
-	private:
+	protected:
 		const std::string	_name;
 		bool				_isSigned;
 		const unsigned int	_gradeSign;
@@ -29,7 +29,7 @@ class	AForm
 		AForm( std::string name, unsigned int gradeSign, unsigned int gradeExecute );
 		AForm( const AForm &other );
 		AForm &	operator=( const AForm &other );
-		~AForm( void );
+		virtual ~AForm( void );
 
 		std::string		getName( void ) const;
 		bool			getSignedStatus( void ) const;
@@ -37,12 +37,8 @@ class	AForm
 		unsigned int	getGradeExecute( void ) const;
 
 		void			beSigned( const Bureaucrat & bur);
-		virtual void	execute( void ) const = 0;
-		/*
-			Now, add the execute(Bureaucrat const & executor) const member function to
-			the base form and implement a function to execute the form’s action of the concrete
-			classes.
-		*/
+		void			execute( Bureaucrat const & executor ) const;
+		virtual void	executeForm( void ) const = 0;
 		
 		class	GradeTooHighException : public std::exception
 		{
@@ -50,6 +46,11 @@ class	AForm
 				const char *	what() const throw();
 		};
 		class	GradeTooLowException : public std::exception
+		{
+			public:
+				const char *	what() const throw();
+		};
+		class	FormNotSigned : public std::exception
 		{
 			public:
 				const char *	what() const throw();

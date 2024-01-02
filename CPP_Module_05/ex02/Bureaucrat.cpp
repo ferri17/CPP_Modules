@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2024/01/02 01:09:05 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/01/03 00:09:31 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
 Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(150)
 {
-	std::cout << "Bureaucrat Default constructor called." << std::endl;
+	//std::cout << "Bureaucrat Default constructor called." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name)
 {
-	std::cout << "Name constructor called." << std::endl;
+	//std::cout << "Name constructor called." << std::endl;
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else if (grade < 1)
@@ -31,13 +31,13 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name)
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other.getName())
 {
-	std::cout << "Copy constructor called." << std::endl;
+	//std::cout << "Copy constructor called." << std::endl;
 	*this = other;
 }
 
 Bureaucrat &	Bureaucrat::operator=(const Bureaucrat &other)
 {
-	std::cout << "Copy assignment operator called." << std::endl;
+	//std::cout << "Copy assignment operator called." << std::endl;
 	if (this != &other)
 	{
 		this->_grade = other._grade;
@@ -47,7 +47,7 @@ Bureaucrat &	Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat( void )
 {
-	std::cout << "Destructor called." << std::endl;
+	//std::cout << "Destructor called." << std::endl;
 }
 
 /* ------------------- MEMBER FUNCTIONS ------------------*/
@@ -76,18 +76,33 @@ void	Bureaucrat::decrementGrade(void)
 	this->_grade += 1; 
 }
 
-void		Bureaucrat::signForm(Form &form)
+void		Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
 		form.beSigned(*this);
 		std::cout << "Bureaucrat " << this->getName() << " signed form " << form.getName() << std::endl;
 	}
-	catch (Form::GradeTooLowException & e)
+	catch (AForm::GradeTooLowException & e)
 	{
 		std::cout << "Bureaucrat " << this->getName() << " couldn't sign form because " << e.what() << std::endl;
 	}
 }
+
+void		Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << "Bureaucrat " << this->getName() << " executed form " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "Bureaucrat " << this->getName() << " couldn't execute form because " << e.what() << std::endl;
+	}
+	
+}
+
 
 
 /*---------------------- OPERATORS -----------------------*/

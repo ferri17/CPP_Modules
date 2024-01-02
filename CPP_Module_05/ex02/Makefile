@@ -6,12 +6,13 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2024/01/02 00:55:37 by fbosch           ###   ########.fr        #
+#    Updated: 2024/01/03 00:04:50 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	formzzz
-SRC			=	main.cpp Bureaucrat.cpp Form.cpp
+NAME		=	manyFormz
+SRC			=	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp\
+				RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJ			=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP			=	$(OBJ:%.o=%.d)
 
