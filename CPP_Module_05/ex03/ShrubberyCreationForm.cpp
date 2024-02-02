@@ -46,8 +46,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 void	ShrubberyCreationForm::executeForm(void) const
 {
 	std::ofstream	file;
+	const std::string	name = this->_target + "_shrubbery";
+	const char	*filename = name.c_str();
 
-	file.open(this->_target + "_shrubbery");
+	file.open(filename);
 	if (file.fail() == true)
 	{
 		std::cerr << "Error opening file." << std::endl;

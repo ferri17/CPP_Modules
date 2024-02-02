@@ -47,7 +47,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 /* ------------------- MEMBER FUNCTIONS ------------------*/
 void	RobotomyRequestForm::executeForm(void) const
 {
-	std::srand(std::time(nullptr));
+	std::srand(std::time(NULL));
 
 	std::cout << "xzxzyx...... ";
 	if (std::rand() % 2 == 0)
