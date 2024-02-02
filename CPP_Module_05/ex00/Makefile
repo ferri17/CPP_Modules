@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
+#    By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2023/12/31 19:13:00 by fbosch           ###   ########.fr        #
+#    Updated: 2024/02/02 17:55:15 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	bureaucrat
-SRC			=	main.cpp Bureaucrat.cpp Form.cpp
+SRC			=	main.cpp Bureaucrat.cpp
 OBJ			=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP			=	$(OBJ:%.o=%.d)
 
