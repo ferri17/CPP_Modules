@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2024/01/07 21:02:06 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/07 01:45:49 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,27 @@
 
 /*--------------------- EXCEPTIONS ----------------------*/
 
-void	convertToChar(const std::string & value)
+void	convertToChar(const std::string & value, const dataType type)
 {
-	int	ascii;
-	
-	try
+	std::cout << "char: ";
+	if (type == _CHAR_P)
+		std::cout << value << std::endl;
+	else if (type == _INT_P)
 	{
-		ascii = std::stoi(value);
-		std::cout << "num: " << ascii << std::endl;
-		if (ascii > 127 || ascii < 0)
-			std::cout << "char: impossible" << std::endl;
-		else
-		{
-			if (std::isprint(ascii))
-				std::cout << "char: " << static_cast<char>(ascii) << std::endl;
-			else
-				std::cout << "char: non-printable" << std::endl;
-		}
+		int	nb = std::atoi(value.c_str());
+		if (std::isprint(nb))
+			std::cout << static_cast<char>(nb) << std::endl;
+	}
+}
 
-	}
-	catch(const std::exception& e)
-	{
-		if (value.length() == 1)
-			std::cout << "char: " << value << std::endl;
-		else
-			std::cout << "char: impossible" << std::endl;
-	}
+dataType	ScalarConverter::getType(const std::string & value)
+{
+	dataType	type = _INT_P;
+
+	if (value.length() == 1 && !std::isdigit(value.at(0)))
+		type = _CHAR_P;
+	
+	return (type);
 }
 
 void	ScalarConverter::convert(const std::string & value)
@@ -54,6 +49,10 @@ void	ScalarConverter::convert(const std::string & value)
 	int		nb;
 	float	fl;
 	double	db; */
-	convertToChar(value);
+	dataType	type;
+
+	std::cout << "value sent: " << value << std::endl;
+	type = _INT_P;
+	convertToChar(value, type);
 	//std::cout << "char: " << convertToChar(value) << std::endl;
 }

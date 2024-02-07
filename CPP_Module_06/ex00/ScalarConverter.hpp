@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/01/04 12:06:38 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/07 01:43:03 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 # define SCALARCONVERTOR_HPP
 
 # include <iostream>
-# include <limits.h>
+# include <climits>
+
+typedef enum	type
+{
+	_CHAR_P,
+	_INT_P,
+	_FLOAT_P,
+	_DOUBLE_P
+}	dataType;
 
 class	ScalarConverter
 {
@@ -24,7 +32,8 @@ class	ScalarConverter
 		ScalarConverter &	operator=(const ScalarConverter & other);
 		~ScalarConverter( void );
 	public:
-		static void	convert( const std::string & value );
+		static void		convert( const std::string & value );
+		static dataType	getType(const std::string & value);
 };
 
 #endif
