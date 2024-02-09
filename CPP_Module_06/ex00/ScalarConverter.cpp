@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/09 00:48:43 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/09 19:06:32 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <sstream>
 
-/* ------------ ORTHODOX CANONICAL CLASS FORM -------------*/
-
-/* ------------------- MEMBER FUNCTIONS ------------------*/
-
-/*---------------------- OPERATORS -----------------------*/
-
-/*--------------------- EXCEPTIONS ----------------------*/
-
-//CHECK IF CHAR OR UNSIGNED CHAR
 void	convertToChar(const std::string & value, const dataType type)
 {
 	std::cout << "char: ";
@@ -32,13 +22,22 @@ void	convertToChar(const std::string & value, const dataType type)
 		else
 			std::cout << "Non displayable" << std::endl;
 	}
-	else if (type == _INT_P)
+	else if (type == _INT_P || type == _FLOAT_P || type == _DOUBLE_P)
 	{
-		int	nb = std::atoi(value.c_str());
+		int	nb_i;
 		
-		if (std::isprint(nb))
-			std::cout << static_cast<char>(nb) << std::endl;
-		else if (nb >= CHAR_MIN && nb <= CHAR_MAX)
+		if (type == _INT_P)
+			nb_i = std::atoi(value.c_str());
+		else if (type == _FLOAT_P)
+			nb_i = static_cast<int>(std::atof(value.c_str()));
+		else
+		{
+			double	nb_d = std::atof(value.c_str());
+			nb_i = static_cast<int>(nb_d);
+		}
+		if (std::isprint(nb_i))
+			std::cout << static_cast<char>(nb_i) << std::endl;
+		else if (nb_i >= std::numeric_limits<char>::min() && nb_i <= std::numeric_limits<char>::max())
 			std::cout << "Non displayable" << std::endl;
 		else
 			std::cout << "impossible" << std::endl;
@@ -49,11 +48,31 @@ void	convertToChar(const std::string & value, const dataType type)
 
 void	convertToInt(const std::string & value, const dataType type)
 {
+	float	nb_f;
+	double	nb_d;
+
 	std::cout << "int: ";
 	if (type == _INT_P)
 		std::cout << value << std::endl;
 	else if (type == _CHAR_P)
 		std::cout << static_cast<int>(value.at(0)) << std::endl;
+	else if (type == _FLOAT_P)
+	{
+
+		nb_f = std::atof(value.c_str());
+		if (nb_f > std::numeric_limits<int>::max() || nb_f < std::numeric_limits<int>::min() || value == "nanf")
+			std::cout << "impossible" << std::endl;
+		else
+			std::cout << static_cast<int>(nb_f) << std::endl;
+	}
+	else if (type == _DOUBLE_P)
+	{
+		nb_d = std::atof(value.c_str());
+		if (nb_d > std::numeric_limits<int>::max() || nb_d < std::numeric_limits<int>::min() || value == "nan")
+			std::cout << "impossible" << std::endl;
+		else
+			std::cout << static_cast<int>(nb_d) << std::endl;
+	}
 	else if (type == _NONE_P)
 		std::cout << "impossible" << std::endl;
 }
@@ -78,21 +97,57 @@ bool	isInt(const std::string & value)
 
 bool	isFloat(const std::string & value)
 {
-	std::istringstream	iss(value);
-	float	f;
-	char	c;
-
-	iss >> f;
-	iss.get(c);
-	std::cout << value.back() << std::endl;
-	if (value == "-inff" || value == "+inff")
+	int		i = 0;
+	bool	point = false;
+	int		strLen = value.length();
+	
+	if (value == "-inff" || value == "+inff" || value == "nanf")
 		return (true);
-	else if (value.back() == 'f' && iss.get() == 'f')
+	if (value.at(i) == '-' || value.at(i) == '+')
+		i++;
+	while(i < strLen)
+	{
+		if (!std::isdigit(value.at(i)))
+		{
+			if (value.at(i) != '.' || point == true)
+				break;
+			else if (value.at(i) == '.')
+				point = true;
+		}
+		i++;
+	}
+	if (i == (strLen - 1) && value.at(i) == 'f' && point == true)
 		return (true);
 	return (false);
 }
 
-dataType	ScalarConverter::getType(const std::string & value)
+bool	isDouble(const std::string & value)
+{
+	int		i = 0;
+	bool	point = false;
+	int		strLen = value.length();
+	
+	if (value == "-inf" || value == "+inf" || value == "nan")
+		return (true);
+	if (value.at(i) == '-' || value.at(i) == '+')
+		i++;
+	while(i < strLen)
+	{
+		if (!std::isdigit(value.at(i)))
+		{
+			if (value.at(i) != '.' || point == true)
+				break;
+			else if (value.at(i) == '.')
+				point = true;
+		}
+		i++;
+	}
+	if (i == strLen && point == true)
+		return (true);
+	return (false);
+}
+
+dataType	getType(const std::string & value)
 {
 	dataType	type = _NONE_P;
 
@@ -103,10 +158,9 @@ dataType	ScalarConverter::getType(const std::string & value)
 	else if (isInt(value))
 		type = _INT_P;
 	else if (isFloat(value))
-	{
-		std::cout << "valid float" << std::endl;
 		type = _FLOAT_P;
-	}
+	else if (isDouble(value))
+		type = _DOUBLE_P;
 	return (type);
 }
 
@@ -119,3 +173,25 @@ void	ScalarConverter::convert(const std::string & value)
 	convertToChar(value, type);
 	convertToInt(value, type);
 }
+
+/* switch (type)
+	{
+	case _CHAR_P:
+		std::cout << "CHAR" << std::endl;
+		break;
+	case _INT_P:
+		std::cout << "INT" << std::endl;
+		break;
+	case _DOUBLE_P:
+		std::cout << "DOUBLE" << std::endl;
+		break;
+	case _FLOAT_P:
+		std::cout << "FLOAT" << std::endl;
+		break;
+	case _NONE_P:
+		std::cout << "NONE" << std::endl;
+		break;
+	default:
+		break;
+	}
+	return; */

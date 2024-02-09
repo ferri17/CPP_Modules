@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/08 11:46:59 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/09 18:26:56 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define SCALARCONVERTOR_HPP
 
 # include <iostream>
-# include <climits>
+# include <limits>
+#include <sstream>
 
 typedef enum	type
 {
@@ -34,7 +35,6 @@ class	ScalarConverter
 		~ScalarConverter( void );
 	public:
 		static void		convert( const std::string & value );
-		static dataType	getType(const std::string & value);
 };
 
 #endif
