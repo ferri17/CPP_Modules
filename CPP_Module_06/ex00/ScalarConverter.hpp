@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/07 01:43:03 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/08 11:46:59 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 typedef enum	type
 {
+	_NONE_P,
 	_CHAR_P,
 	_INT_P,
 	_FLOAT_P,
