@@ -12,12 +12,19 @@
 
 #include "ScalarConverter.hpp"
 
+bool	myIsPrint(int c)
+{
+	if (c >= std::numeric_limits<unsigned char>::min() && c <= std::numeric_limits<unsigned char>::max())
+		return (std::isprint(c));
+	return (false);
+}
+
 void	convertToChar(const std::string & value, const dataType type)
 {
 	std::cout << "char: ";
 	if (type == _CHAR_P)
 	{
-		if (std::isprint(value.at(0)))
+		if (myIsPrint(value.at(0)))
 			std::cout << "'" << value << "'" << std::endl;
 		else
 			std::cout << "Non displayable" << std::endl;
@@ -35,7 +42,7 @@ void	convertToChar(const std::string & value, const dataType type)
 			double	nb_d = std::atof(value.c_str());
 			nb_i = static_cast<int>(nb_d);
 		}
-		if (std::isprint(nb_i))
+		if (myIsPrint(nb_i))
 			std::cout << "'" << static_cast<char>(nb_i) << "'" << std::endl;
 		else if (nb_i >= std::numeric_limits<char>::min() && nb_i <= std::numeric_limits<char>::max())
 			std::cout << "Non displayable" << std::endl;
@@ -136,7 +143,7 @@ bool	isInt(const std::string & value)
 	char	*endptr;
 	long	nb = std::strtol(str, &endptr, 10);
 	
-	if (endptr != str && *endptr == '\0' && nb <= INT_MAX && nb >= INT_MIN)
+	if (endptr != str && *endptr == '\0' && nb <= std::numeric_limits<int>::max() && nb >= std::numeric_limits<int>::min())
 		return (true);
 	return (false);
 }

@@ -15,7 +15,8 @@
 
 # include <iostream>
 # include <limits>
-#include <sstream>
+# include <sstream>
+# include <cstdlib>
 
 typedef enum	type
 {
