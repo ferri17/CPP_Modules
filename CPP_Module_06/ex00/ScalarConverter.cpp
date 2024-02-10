@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/09 19:06:32 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/10 02:58:42 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	convertToChar(const std::string & value, const dataType type)
 		else
 			std::cout << "impossible" << std::endl;
 	}
-	else if (type == _NONE_P)
+	else
 		std::cout << "impossible" << std::endl;
 }
 
@@ -53,7 +53,7 @@ void	convertToInt(const std::string & value, const dataType type)
 
 	std::cout << "int: ";
 	if (type == _INT_P)
-		std::cout << value << std::endl;
+		std::cout << std::atoi(value.c_str()) << std::endl;
 	else if (type == _CHAR_P)
 		std::cout << static_cast<int>(value.at(0)) << std::endl;
 	else if (type == _FLOAT_P)
@@ -73,9 +73,48 @@ void	convertToInt(const std::string & value, const dataType type)
 		else
 			std::cout << static_cast<int>(nb_d) << std::endl;
 	}
-	else if (type == _NONE_P)
+	else
 		std::cout << "impossible" << std::endl;
 }
+
+void	convertToFloat(const std::string & value, const dataType type)
+{
+	float	nb_f;
+	double	nb_d;
+
+	std::cout << "float: ";
+	if (type == _FLOAT_P)
+	{
+		if (value == "-inff" || value == "+inff" || value == "nanf")
+			std::cout << value << std::endl;
+		nb_f = std::atof(value.c_str());
+		if (nb_f > std::numeric_limits<float>::max())
+			std::cout <<  "+inff" << std::endl;
+		else if (nb_f < -std::numeric_limits<float>::max())
+			std::cout <<  "-inff" << std::endl;
+		else
+			std::cout << nb_f << "f" << std::endl;
+	}
+	else if (type == _CHAR_P)
+		std::cout << static_cast<int>(value.at(0)) << "f" << std::endl;
+	else if (type == _INT_P)
+		std::cout << std::atoi(value.c_str()) << "f" << std::endl;
+	else if (type == _DOUBLE_P)
+	{
+		if (value == "-inf" || value == "+inf" || value == "nan")
+			std::cout << value << "f" << std::endl;
+		nb_d = std::atof(value.c_str());
+		if (nb_d > std::numeric_limits<float>::max())
+			std::cout <<  "+inff" << std::endl;
+		else if (nb_d < -std::numeric_limits<float>::max())
+			std::cout <<  "-inff" << std::endl;
+		else
+			std::cout << nb_d << "f" << std::endl;
+	}
+	else
+		std::cout << "impossible" << std::endl;
+}
+
 
 bool	isChar(const std::string & value)
 {
@@ -172,6 +211,7 @@ void	ScalarConverter::convert(const std::string & value)
 	type = getType(value);
 	convertToChar(value, type);
 	convertToInt(value, type);
+	convertToFloat(value, type);
 }
 
 /* switch (type)
