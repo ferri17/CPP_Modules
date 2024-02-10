@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:06 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/10 02:58:42 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/10 20:32:32 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	convertToChar(const std::string & value, const dataType type)
 	if (type == _CHAR_P)
 	{
 		if (std::isprint(value.at(0)))
-			std::cout << value << std::endl;
+			std::cout << "'" << value << "'" << std::endl;
 		else
 			std::cout << "Non displayable" << std::endl;
 	}
@@ -36,7 +36,7 @@ void	convertToChar(const std::string & value, const dataType type)
 			nb_i = static_cast<int>(nb_d);
 		}
 		if (std::isprint(nb_i))
-			std::cout << static_cast<char>(nb_i) << std::endl;
+			std::cout << "'" << static_cast<char>(nb_i) << "'" << std::endl;
 		else if (nb_i >= std::numeric_limits<char>::min() && nb_i <= std::numeric_limits<char>::max())
 			std::cout << "Non displayable" << std::endl;
 		else
@@ -79,30 +79,11 @@ void	convertToInt(const std::string & value, const dataType type)
 
 void	convertToFloat(const std::string & value, const dataType type)
 {
-	float	nb_f;
 	double	nb_d;
 
 	std::cout << "float: ";
-	if (type == _FLOAT_P)
+	if (type == _FLOAT_P || type == _DOUBLE_P)
 	{
-		if (value == "-inff" || value == "+inff" || value == "nanf")
-			std::cout << value << std::endl;
-		nb_f = std::atof(value.c_str());
-		if (nb_f > std::numeric_limits<float>::max())
-			std::cout <<  "+inff" << std::endl;
-		else if (nb_f < -std::numeric_limits<float>::max())
-			std::cout <<  "-inff" << std::endl;
-		else
-			std::cout << nb_f << "f" << std::endl;
-	}
-	else if (type == _CHAR_P)
-		std::cout << static_cast<int>(value.at(0)) << "f" << std::endl;
-	else if (type == _INT_P)
-		std::cout << std::atoi(value.c_str()) << "f" << std::endl;
-	else if (type == _DOUBLE_P)
-	{
-		if (value == "-inf" || value == "+inf" || value == "nan")
-			std::cout << value << "f" << std::endl;
 		nb_d = std::atof(value.c_str());
 		if (nb_d > std::numeric_limits<float>::max())
 			std::cout <<  "+inff" << std::endl;
@@ -111,10 +92,36 @@ void	convertToFloat(const std::string & value, const dataType type)
 		else
 			std::cout << nb_d << "f" << std::endl;
 	}
+	else if (type == _CHAR_P)
+		std::cout << static_cast<int>(value.at(0)) << ".0f" << std::endl;
+	else if (type == _INT_P)
+		std::cout << std::atoi(value.c_str()) << ".0f" << std::endl;
 	else
 		std::cout << "impossible" << std::endl;
 }
 
+void	convertToDouble(const std::string & value, const dataType type)
+{
+	double	nb_d;
+
+	std::cout << "double: ";
+	if (type == _DOUBLE_P || type == _FLOAT_P)
+	{
+		nb_d = std::atof(value.c_str());
+		if (nb_d > std::numeric_limits<double>::max())
+			std::cout <<  "+inf" << std::endl;
+		else if (nb_d < -std::numeric_limits<double>::max())
+			std::cout <<  "-inf" << std::endl;
+		else
+			std::cout << nb_d << std::endl;
+	}
+	else if (type == _CHAR_P)
+		std::cout << static_cast<int>(value.at(0)) << ".0" << std::endl;
+	else if (type == _INT_P)
+		std::cout << std::atoi(value.c_str()) << ".0" << std::endl;
+	else
+		std::cout << "impossible" << std::endl;
+}
 
 bool	isChar(const std::string & value)
 {
@@ -206,32 +213,11 @@ dataType	getType(const std::string & value)
 void	ScalarConverter::convert(const std::string & value)
 {
 	dataType	type;
-
-	std::cout << "value sent: " << value << std::endl;
+	
+	std::cout << std::fixed;
 	type = getType(value);
 	convertToChar(value, type);
 	convertToInt(value, type);
 	convertToFloat(value, type);
+	convertToDouble(value, type);
 }
-
-/* switch (type)
-	{
-	case _CHAR_P:
-		std::cout << "CHAR" << std::endl;
-		break;
-	case _INT_P:
-		std::cout << "INT" << std::endl;
-		break;
-	case _DOUBLE_P:
-		std::cout << "DOUBLE" << std::endl;
-		break;
-	case _FLOAT_P:
-		std::cout << "FLOAT" << std::endl;
-		break;
-	case _NONE_P:
-		std::cout << "NONE" << std::endl;
-		break;
-	default:
-		break;
-	}
-	return; */
