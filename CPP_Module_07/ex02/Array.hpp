@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/12 19:55:22 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/13 01:27:11 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,18 @@
 #include <iostream>
 
 template <typename T>
-void	iter(T * addr, unsigned int size, void (*func)(T &))
+class	Array
 {
-	if (addr == NULL)
-		return ;
-	for (unsigned int i = 0; i < size; i++)
-		func(addr[i]);
-}
+	private:
+		T *				_arr;
+		unsigned int	_size;
+	public:
+		Array(void);
+		Array(unsigned int size);
+		Array(const Array & other);
+		Array &	operator=(const Array & other);
+		~Array(void);
 
-template <typename T>
-void	printArray(T * arr, unsigned int size)
-{
-	for (unsigned int i = 0; i < size; i++)
-	{
-		if (&arr[i] != NULL)
-			std::cout << arr[i];
-		if (i == size - 1)
-			std::cout << std::endl;
-		else
-			std::cout << ",";
-	}
-}
-
-template <typename T>
-void	addOne(T & addr)
-{
-	addr++;
-}
-
-void	addOneString(std::string & str)
-{
-	unsigned int	strLen = str.length();
-
-	for (unsigned int i = 0; i < strLen; i++)
-		addOne(str[i]);
-}
+		unsigned int	size();
+};
 
