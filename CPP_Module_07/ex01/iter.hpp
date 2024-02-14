@@ -24,17 +24,9 @@ void	iter(T * addr, unsigned int size, void (*func)(T &))
 }
 
 template <typename T>
-void	printArray(T * arr, unsigned int size)
+void	printArray(T & arr)
 {
-	for (unsigned int i = 0; i < size; i++)
-	{
-		if (&arr[i] != NULL)
-			std::cout << arr[i];
-		if (i == size - 1)
-			std::cout << std::endl;
-		else
-			std::cout << ",";
-	}
+	std::cout << arr << std::endl;
 }
 
 template <typename T>

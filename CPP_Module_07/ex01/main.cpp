@@ -22,20 +22,20 @@ int	main(void)
 	char		chrArray[CHR_ARR_SIZE] = {'A', 'K'};
 	std::string	strArray[STR_ARR_SIZE] = {"Car", "Animal", "Ynn"};
 
-	printArray(nbArray, NB_ARR_SIZE);
+	::iter(nbArray, NB_ARR_SIZE, printArray);
 	::iter(nbArray, NB_ARR_SIZE, addOne);
-	printArray(nbArray, NB_ARR_SIZE);
+	::iter(nbArray, NB_ARR_SIZE, printArray);
 
 	std::cout << std::endl;
 
-	printArray(chrArray, CHR_ARR_SIZE);
+	::iter(chrArray, CHR_ARR_SIZE, printArray);
 	::iter(chrArray, CHR_ARR_SIZE, addOne);
-	printArray(chrArray, CHR_ARR_SIZE);
+	::iter(chrArray, CHR_ARR_SIZE, printArray);
 
 	std::cout << std::endl;
 
-	printArray(strArray, STR_ARR_SIZE);
+	::iter(strArray, STR_ARR_SIZE, printArray);
 	::iter(strArray, STR_ARR_SIZE, addOneString);
-	printArray(strArray, STR_ARR_SIZE);
+	::iter(strArray, STR_ARR_SIZE, printArray);
 	return 0;
 }

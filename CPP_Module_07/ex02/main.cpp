@@ -13,6 +13,8 @@
 #include "Array.hpp"
 #include "Array.tpp"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 int	main(void)
 {
