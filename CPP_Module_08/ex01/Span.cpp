@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 23:07:35 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/15 01:05:33 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/15 01:32:12 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	Span::addNumber(int nb)
 
 long int	Span::shortestSpan(void)
 {
-
+	std::vector<long int>	diff(this->_size);
 	if (this->_numbers.size() < 2)
 		throw std::logic_error("Array size too small");
-	std::cout << std::numeric_limits<long>::min() << std::endl;
-	std::cout << std::numeric_limits<long>::max() << std::endl;
-
+	/* std::adjacent_difference(this->_numbers.begin(), this->_numbers.end(), diff.begin());
+	for (unsigned int i = 0; i < this->_size; i++)
+		std::cout << diff.at(i) << std::endl; */
 	return (0);
 }
 long int	Span::longestSpan(void)

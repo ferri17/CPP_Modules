@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/15 01:01:42 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/15 01:12:00 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <vector>
 #include <cstdlib>
+#include <numeric>
 
 class	Span
 {
