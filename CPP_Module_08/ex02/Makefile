@@ -6,11 +6,11 @@
 #    By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2024/02/15 17:57:27 by fbosch           ###   ########.fr        #
+#    Updated: 2024/02/16 10:15:06 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	span
+NAME		=	mutantStack
 SRC			=	main.cpp
 OBJ			=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP			=	$(OBJ:%.o=%.d)
