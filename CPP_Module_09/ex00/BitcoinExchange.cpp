@@ -3,28 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:14:40 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/16 17:21:46 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/17 01:29:41 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 /* ------------------- ORTHODOX CANONICAL CLASS FORM ------------------*/
-BitcoinExchange::BitcoinExchange(void)
-{
-}
+BitcoinExchange::BitcoinExchange(void) {}
 
 BitcoinExchange::BitcoinExchange(std::string fileStr)
 {
 	this->_ratesFilename = fileStr;
 	this->_rates.open(this->_ratesFilename.c_str());
 	if (this->_rates.fail() == true)
-	{
-		std::cerr << "Error opening file." << std::endl;
-	}
+		throw std::runtime_error("Error opening file.");
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
@@ -41,9 +37,7 @@ BitcoinExchange &	BitcoinExchange::operator=(const BitcoinExchange &other)
 		{
 			this->_rates.open(this->_ratesFilename.c_str());
 			if (this->_rates.fail() == true)
-			{
-				std::cerr << "Error opening file." << std::endl;
-			}
+				throw std::runtime_error("Error opening file.");
 		}
 	}
 	return (*this);
@@ -57,15 +51,10 @@ void	BitcoinExchange::loadRatesFile(std::string fileStr)
 {
 	if (this->_rates.is_open())
 		this->_rates.close();
-	else
-	{
-		this->_ratesFilename = fileStr;
-		this->_rates.open(this->_ratesFilename.c_str());
-		if (this->_rates.fail() == true)
-		{
-			std::cerr << "Error opening file." << std::endl;
-		}
-	}
+	this->_ratesFilename = fileStr;
+	this->_rates.open(this->_ratesFilename.c_str());
+	if (this->_rates.fail() == true)
+		throw std::runtime_error("Error opening file.");
 }
 
 void	BitcoinExchange::printFile(void)
