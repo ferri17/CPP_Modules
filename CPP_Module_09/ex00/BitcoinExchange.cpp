@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:14:40 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/19 03:29:17 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/19 18:47:34 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ BitcoinExchange::BitcoinExchange(const std::string fileStr)
 {
 	this->_ratesFile.open(fileStr);
 	if (this->_ratesFile.fail() == true)
-		throw std::runtime_error("Error opening rates file.");
+		throw std::runtime_error("Error opening exchange rates file.");
 	this->_rates = this->parseDateValueMap(this->_ratesFile);
 	this->_ratesFile.close();
 	if (this->_rates.empty())
@@ -80,7 +80,6 @@ void	BitcoinExchange::identifyLine(std::string line)
 	std::tm				date;
 	std::istringstream ss;
     
-
 	while (i < line.length() && line.at(i) != '|')
 		i++;
 	if (line.length() < 1 || i >= (line.length() - 1))
@@ -109,8 +108,10 @@ void	BitcoinExchange::identifyLine(std::string line)
 		return;
 	}
 	date.tm_yday = yearToDays(date.tm_year, date.tm_mon, date.tm_mday);
-	std::cout << date.tm_year + 1900 << "-" << date.tm_mon + 1 << "-" << date.tm_mday << " => "
-				<< value << " = ";
+	std::cout << date.tm_year + 1900 << "-";
+	std::cout << std::setfill('0') << std::setw(2) << date.tm_mon + 1 << "-";
+	std::cout << std::setfill('0') << std::setw(2) << date.tm_mday << " => ";
+	std::cout << value << " = ";
 	this->convert(date, value);
 	std::cout << std::endl;
 }
@@ -122,19 +123,20 @@ void	BitcoinExchange::doExchange(const std::string exchangeStr)
 		this->_exchangesFile.close();
 	this->_exchangesFile.open(exchangeStr);
 	if (this->_exchangesFile.fail() == true)
-		throw std::runtime_error("Error opening exchange file.");
+		throw std::runtime_error("Error opening input file.");
 	
 	//Check optional header "date | value"
 	std::getline(this->_exchangesFile, line, '\n');
-	if (line != "date | value")
+	if (line != "date | value" && !this->_exchangesFile.eof())
 		this->identifyLine(line);
 	//Read rest of the file
 	while (std::getline(this->_exchangesFile, line, '\n'))
 	{
+
 		this->identifyLine(line);
 	}
 	if (this->_exchangesFile.bad() || !this->_exchangesFile.eof())
-		throw std::runtime_error("Error reading exchange file");
+		throw std::runtime_error("Error reading input file");
 }
 
 int	BitcoinExchange::lineToMap(std::string line, std::pair<std::tm, float> & node)
@@ -192,7 +194,7 @@ void	BitcoinExchange::loadRatesFile(const std::string fileStr)
 		this->_ratesFile.close();
 	this->_ratesFile.open(fileStr);
 	if (this->_ratesFile.fail() == true)
-		throw std::runtime_error("Error opening rates file.");
+		throw std::runtime_error("Error opening exchange rates file.");
 	this->_rates = this->parseDateValueMap(this->_ratesFile);
 	this->_ratesFile.close();
 	if (this->_rates.empty())
@@ -200,21 +202,6 @@ void	BitcoinExchange::loadRatesFile(const std::string fileStr)
 }
 
 /* ------------------- HELPERS ------------------*/
-
-/* unsigned int	dateToDays(std::tm date)
-{
-	unsigned int	totalDays = 0;
-	int				rYear = date.tm_year;
-
-	totalDays += yearToDays(rYear + 1900, date.tm_mon, date.tm_mday);
-	rYear--;
-	while (rYear)
-	{
-		totalDays += yearToDays(rYear + 1900, 11, 31);
-		rYear--;
-	}
-	return (totalDays);
-} */
 
 bool operator<(const std::tm& t1, const std::tm& t2)
 {
@@ -278,12 +265,3 @@ int	yearToDays(int year, int month, int days)
 	daysYear += days;
 	return (daysYear);
 }
-
-/* ------------------- MEMBER FUNCTIONS ------------------*/
-
-
-
-/*---------------------- OPERATORS -----------------------*/
-
-
-/*--------------------- EXCEPTIONS ----------------------*/

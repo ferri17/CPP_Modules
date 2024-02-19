@@ -6,7 +6,7 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2024/02/19 00:55:54 by fbosch           ###   ########.fr        #
+#    Updated: 2024/02/19 18:49:31 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ DEP			=	$(OBJ:%.o=%.d)
 DIR_OBJ		=	.obj/
 
 CXX			=	c++
-CXXFLAGS	=	-std=c++98 -Wall -Wextra -Werror -pedantic -fsanitize=address
+CXXFLAGS	=	-std=c++98 -Wall -Wextra -Werror -pedantic #-fsanitize=address
 DPFLAGS		=	-MMD -MP
 RM			=	rm -rf
 
