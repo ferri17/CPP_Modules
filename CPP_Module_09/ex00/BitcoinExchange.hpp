@@ -16,9 +16,11 @@
 #include <fstream>
 #include <exception>
 #include <map>
-#include <ctime>
-#include <sstream>
 #include <string>
+#include <iomanip>
+#include <cstdlib>
+#include <limits>
+#include <ctime>
 
 #define MIN_VALUE 0
 #define MAX_VALUE 1000

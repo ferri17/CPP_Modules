@@ -17,7 +17,7 @@ BitcoinExchange::BitcoinExchange(void) {}
 
 BitcoinExchange::BitcoinExchange(const std::string fileStr)
 {
-	this->_ratesFile.open(fileStr);
+	this->_ratesFile.open(fileStr.c_str());
 	if (this->_ratesFile.fail() == true)
 		throw std::runtime_error("Error opening exchange rates file.");
 	this->_rates = this->parseDateValueMap(this->_ratesFile);
@@ -78,7 +78,6 @@ void	BitcoinExchange::identifyLine(std::string line)
 	std::string			sdate;
 	std::string			svalue;
 	std::tm				date;
-	std::istringstream ss;
     
 	while (i < line.length() && line.at(i) != '|')
 		i++;
@@ -100,9 +99,7 @@ void	BitcoinExchange::identifyLine(std::string line)
 		std::cout << "Error: value out of range [0, 1000] => " << value << std::endl;
 		return;
 	}
-	ss.str(sdate);
-	ss >> std::get_time(&date, "%Y-%m-%d");
-	if (ss.fail())
+	if (!strptime(sdate.c_str(), "%Y-%m-%d", &date))
 	{
 		std::cout << "Error: invalid date => " << sdate << std::endl;
 		return;
@@ -121,7 +118,7 @@ void	BitcoinExchange::doExchange(const std::string exchangeStr)
 	std::string	line;
 	if (this->_exchangesFile.is_open())
 		this->_exchangesFile.close();
-	this->_exchangesFile.open(exchangeStr);
+	this->_exchangesFile.open(exchangeStr.c_str());
 	if (this->_exchangesFile.fail() == true)
 		throw std::runtime_error("Error opening input file.");
 	
@@ -144,8 +141,6 @@ int	BitcoinExchange::lineToMap(std::string line, std::pair<std::tm, float> & nod
 	unsigned int	i = 0;
 	std::string		sdate;
 	std::string		svalue;
-	std::istringstream ss;
-    
 
 	while (i < line.length() && line.at(i) != ',')
 		i++;
@@ -158,9 +153,7 @@ int	BitcoinExchange::lineToMap(std::string line, std::pair<std::tm, float> & nod
 	node.second = std::atof(svalue.c_str());
 	if (node.second < MIN_VALUE || node.second > std::numeric_limits<int>::max())
 		return (0);
-	ss.str(sdate);
-	ss >> std::get_time(&node.first, "%Y-%m-%d");
-	if (ss.fail())
+	if (!strptime(sdate.c_str(), "%Y-%m-%d", &node.first))
 		return (0);
 	node.first.tm_yday = yearToDays(node.first.tm_year, node.first.tm_mon, node.first.tm_mday);
 	return (1);
@@ -192,7 +185,7 @@ void	BitcoinExchange::loadRatesFile(const std::string fileStr)
 {
 	if (this->_ratesFile.is_open())
 		this->_ratesFile.close();
-	this->_ratesFile.open(fileStr);
+	this->_ratesFile.open(fileStr.c_str());
 	if (this->_ratesFile.fail() == true)
 		throw std::runtime_error("Error opening exchange rates file.");
 	this->_rates = this->parseDateValueMap(this->_ratesFile);
