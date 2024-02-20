@@ -6,7 +6,7 @@
 /*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:14:40 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/19 18:47:34 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/20 00:00:55 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ void	BitcoinExchange::doExchange(const std::string exchangeStr)
 	//Read rest of the file
 	while (std::getline(this->_exchangesFile, line, '\n'))
 	{
-
 		this->identifyLine(line);
 	}
 	if (this->_exchangesFile.bad() || !this->_exchangesFile.eof())

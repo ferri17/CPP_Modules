@@ -6,12 +6,12 @@
 #    By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/16 17:44:52 by fbosch            #+#    #+#              #
-#    Updated: 2024/02/15 00:46:39 by fbosch           ###   ########.fr        #
+#    Updated: 2024/02/20 00:03:58 by fbosch           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	span
-SRC			=	main.cpp Span.cpp
+NAME		=	RPN
+SRC			=	main.cpp RPN.cpp
 OBJ			=	${SRC:%.cpp=$(DIR_OBJ)%.o}
 DEP			=	$(OBJ:%.o=%.d)
 
