@@ -13,10 +13,8 @@
 #pragma once
 
 #include <iostream>
-#include <limits>
 #include <algorithm>
 #include <stack>
-#include <string>
 #include <sstream>
 
 void	calculateRPN(const std::string & str);
