@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/21 00:11:12 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/22 14:09:05 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(int ac, char **av)
 {
 	if (ac > 1)
 	{
+		std::cout << std::fixed; 
 		try
 		{
 			mergeInsertSortVector(av);
