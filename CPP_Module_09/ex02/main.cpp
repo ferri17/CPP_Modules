@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 00:45:29 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/23 02:52:42 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/23 14:00:17 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,33 @@ int main(int ac, char **av)
 		try
 		{
 			clock_t	t = clock();
-			std::vector<int>	unsortedVec = inputToVector(av);
+			std::vector<int>	unsortedVec = inputToContainer<std::vector<int> >(av);
 			std::vector<int>	sortedVec = mergeInsertSortVector(unsortedVec);
 
+			t = clock() - t;
 			std::cout << "Before: ";
 			printContainer(unsortedVec);
 			std::cout << "After: ";
 			printContainer(sortedVec);
-			t = clock() - t;
 			std::cout << "Time to process a range of " << unsortedVec.size() << " elements with std::vector : " << static_cast<double>(t)/CLOCKS_PER_SEC * 1000000 << " us" << std::endl;
+			
+			t = clock();
+			std::deque<int>	unsortedDeque = inputToContainer<std::deque<int> >(av);
+			std::deque<int>	sortedDeque = mergeInsertSortDeque(unsortedDeque);
+
+			t = clock() - t;
+			std::cout << "Time to process a range of " << unsortedDeque.size() << " elements with std::deque : " << static_cast<double>(t)/CLOCKS_PER_SEC * 1000000 << " us" << std::endl;
 			if (isSorted<std::vector<int> >(sortedVec.begin(), sortedVec.end()) && sortedVec.size() == unsortedVec.size())
 				std::cout << GREEN "Vector correctly sorted!" RESET << std::endl;
+			if (isSorted<std::deque<int> >(sortedDeque.begin(), sortedDeque.end()) && sortedDeque.size() == unsortedDeque.size())
+				std::cout << GREEN "Deque correctly sorted!" RESET << std::endl;
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << std::endl;
+			std::cout << e.what() << std::endl;
 		}
 	}
 	else
-		std::cerr << "Invalid number of arguments => ./PmergeMe [number_sequence]" << std::endl;
+		std::cout << "Invalid number of arguments => ./PmergeMe [number_sequence]" << std::endl;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/23 02:51:48 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:47:10 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <deque>
 #include <limits>
 #include <algorithm>
 #include <ctime>
@@ -25,7 +26,37 @@
 #define RESET "\033[0m"
 
 std::vector<int>	mergeInsertSortVector(std::vector<int>	unsortedVec);
-std::vector<int>	inputToVector(char **av);
+std::deque<int>		mergeInsertSortDeque(std::deque<int> unsortedDeque);
+bool				isInt(const std::string value);
+
+template <typename T>
+T	inputToContainer(char **av)
+{
+	int	nb;
+	T	cont;
+
+	for (unsigned int i = 0; av[i]; i++)
+	{
+		if (isInt(av[i]))
+		{
+			nb = std::atoi(av[i]);
+			if (nb > 0)
+			{
+				for (typename T::iterator it = cont.begin(); it != cont.end(); it++)
+				{
+					if (nb == *it)
+						throw std::runtime_error("Duplicate integers in the sequence.");
+				}
+				cont.push_back(nb);
+			}
+			else
+				throw std::runtime_error("Non positive integer in the sequence.");
+		}
+		else
+			throw std::runtime_error("Non valid integer in the sequence.");
+	}
+	return (cont);
+}
 
 template <typename T>
 bool	isSorted(typename T::iterator itBegin, typename T::iterator itEnd)
@@ -62,9 +93,9 @@ void	insertionSortPairs(T & pairs)
 }
 
 template <typename T>
-void	binarySearchInsertion(T & cont, unsigned int left, unsigned int right, int target)
+void	binarySearchInsertion(T & cont, int left, int right, int target)
 {
-	unsigned int	mid;
+	int	mid;
 
 	if (left == right)
 	{
@@ -76,13 +107,13 @@ void	binarySearchInsertion(T & cont, unsigned int left, unsigned int right, int 
 		mid = left + (right - left) / 2;
 		if (cont[mid] < target)
 			left = mid + 1;
-    else
-      right = mid - 1;
-  }
-  if (left < cont.size())
-	cont.insert(cont.begin() + left, target);
-  else
-	cont.push_back(target);
+   		 else
+      		right = mid - 1;
+  	}
+  	if (left < static_cast<int>(cont.size()))
+		cont.insert(cont.begin() + left, target);
+ 	 else
+		cont.push_back(target);
 }
 
 
