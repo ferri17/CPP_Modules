@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 23:07:35 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/22 21:47:51 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/23 02:56:28 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,9 @@ std::vector<int>	inputToVector(char **av)
 	return (vec);
 }
 
-void	mergeInsertSortVector(char **av)
+std::vector<int>	mergeInsertSortVector(std::vector<int>	unsortedVec)
 {
-	clock_t	t = clock();
-	std::vector<int>	unsortedVec;
-	std::vector<int>	sortedVec;
-	
-	av++;
-	unsortedVec = inputToVector(av);
+	std::vector<int>					sortedVec;
 	std::vector<std::pair<int, int> >	pairs;
 
 	//create pairs
@@ -73,7 +68,7 @@ void	mergeInsertSortVector(char **av)
 			pairs.push_back(std::make_pair(-1, *it));
 	}
 
-	//print pairs
+	/* //print pairs
 	std::cout << "Pairs: ";
 	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
 	{
@@ -82,7 +77,7 @@ void	mergeInsertSortVector(char **av)
 		if (it != pairs.end() - 1)
 			std::cout << "    ";
 	}
-	std::cout << std::endl;
+	std::cout << std::endl; */
 
 	//Sort pairs between themselves
 	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
@@ -95,7 +90,7 @@ void	mergeInsertSortVector(char **av)
 	//inser merge insertion here
 	insertionSortPairs(pairs);
 	
-	//print pairs
+	/* //print pairs
 	std::cout << "Pairs ordered: ";
 	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
 	{
@@ -104,7 +99,7 @@ void	mergeInsertSortVector(char **av)
 		if (it != pairs.end() - 1)
 			std::cout << "    ";
 	}
-	std::cout << std::endl;
+	std::cout << std::endl; */
 
 	//Empty first number to vector
 	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
@@ -113,27 +108,16 @@ void	mergeInsertSortVector(char **av)
 			sortedVec.push_back((*it).first);
 	}
 
-	//Binary search insertion
-	unsigned int index;
+	/*
+		Binary search insertion, only does binary search on range (i, end] 
+		since it's ordered pair Ai < Bi, Bi will never be inserted in range <= i
+	*/
 	for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); it++)
 	{
 		if ((*it).first > 0)
-			index = binarySearch(sortedVec.begin(), sortedVec.begin(), 45);
+			binarySearchInsertion(sortedVec, std::distance(pairs.begin(), it) + 1, sortedVec.size(), (*it).second);
 		else
-
+			binarySearchInsertion(sortedVec, 0, sortedVec.size(), (*it).second);
 	}
-	
-	
-	
-	std::cout << "Before: ";
-	printContainer(unsortedVec);
-	std::cout << "After: ";
-	printContainer(sortedVec);
-	t = clock() - t;
-	std::cout << "Time to process a range of " << unsortedVec.size() << " elements with std::vector : " << static_cast<double>(t)/CLOCKS_PER_SEC * 1000000 << " us" << std::endl;
-
+	return (sortedVec);
 }
-
-	/* for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++)
-		std::cout << *it << ",";
-		*/

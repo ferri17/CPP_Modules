@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbosch <fbosch@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbosch <fbosch@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 22:26:25 by fbosch            #+#    #+#             */
-/*   Updated: 2024/02/22 21:47:41 by fbosch           ###   ########.fr       */
+/*   Updated: 2024/02/23 02:51:48 by fbosch           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,32 @@
 #include <limits>
 #include <algorithm>
 #include <ctime>
+#include <iterator>
 
-void	mergeInsertSortVector(char **av);
+#define GREEN "\033[1;32m"
+#define RED "\033[1;31m"
+#define RESET "\033[0m"
+
+std::vector<int>	mergeInsertSortVector(std::vector<int>	unsortedVec);
+std::vector<int>	inputToVector(char **av);
+
+template <typename T>
+bool	isSorted(typename T::iterator itBegin, typename T::iterator itEnd)
+{
+	typename T::value_type	tmp;
+
+	if (itBegin == itEnd)
+		return (true);
+	tmp = *itBegin;
+	++itBegin;
+	for (; itBegin != itEnd; itBegin++)
+	{
+		if (*itBegin < tmp)
+			return (false);
+		tmp = *itBegin;
+	}
+	return (true);
+}
 
 template <typename T>
 void	insertionSortPairs(T & pairs)
@@ -36,28 +60,29 @@ void	insertionSortPairs(T & pairs)
 		}
 	}
 }
+
 template <typename T>
-unsigned int	binarySearch(T & begin, T & end, int target)
+void	binarySearchInsertion(T & cont, unsigned int left, unsigned int right, int target)
 {
-	typename T it = begin;
-/* // Check for empty range
-  if (begin == end)
-    return (0); // Insert at the beginning
+	unsigned int	mid;
 
-  // Binary search loop
-  while (left < right) {
-    typename T mid = begin + (end - begin) / 2;
-
-    // Move based on comparison
-    if (*(begin + mid) < target) {
-      left = mid + 1; // Move left to search for higher values
-    } else {
-      right = mid; // Move right to narrow down the search
-    }
+	if (left == right)
+	{
+		cont.push_back(target);
+		return;
+	}
+	while (left <= right)
+	{
+		mid = left + (right - left) / 2;
+		if (cont[mid] < target)
+			left = mid + 1;
+    else
+      right = mid - 1;
   }
-
-  // Return the insertion point
-  return left; */
+  if (left < cont.size())
+	cont.insert(cont.begin() + left, target);
+  else
+	cont.push_back(target);
 }
 
 
